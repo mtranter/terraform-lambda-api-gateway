@@ -14,6 +14,7 @@ module.exports.handler = function(event, context, callback) {
       </head>
       <body>
         <h1>Hello From Lambda</h1>
+        <h5>Written in NodeJS</h5>
         <h5>Deployed by Terraform</h5>
       </body>
     </html>
