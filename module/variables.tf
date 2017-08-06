@@ -3,24 +3,6 @@ variable "source_file" {
   description = "Source file (jar, zip, etc)"
 }
 
-variable "source_s3_object_version" {
-  default = ""
-  type = "string"
-  description = "Source code s3 object version. Incompatable with source_file"
-}
-
-variable "source_s3_bucket" {
-  default = ""
-  type = "string"
-  description = "Source code s3 bucket. Incompatable with source_file"
-}
-
-variable "source_s3_key" {
-  default = ""
-  type = "string"
-  description = "Source code s3 key. Incompatable with source_file"
-}
-
 variable "function_name" {
   type        = "string"
   description = "Name of the lambda function"

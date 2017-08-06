@@ -23,7 +23,7 @@ resource "aws_api_gateway_rest_api" "test_node_api" {
 
 module "node-example" {
   source        = "github.com/mtranter/terraform-lambda-api-gateway//module"
-  source_file   = "${var.source_file}"
+  source_file   = "${data.archive_file.lambda.output_path}"
   function_name = "node-example"
   runtime       = "nodejs6.10"
   handler       = "index.handler"
