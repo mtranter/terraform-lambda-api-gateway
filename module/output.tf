@@ -1,7 +1,3 @@
-output "invoke_url" {
-  value = "${aws_api_gateway_deployment.deployment_prod.invoke_url}"
-}
-
 output "aws_lambda_function_arn" {
   value = "${aws_lambda_function.lambda_function.arn}"
 }
