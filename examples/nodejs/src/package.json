@@ -1,0 +1,11 @@
+{
+  "name": "terraform-lambda-examples-nodejs",
+  "version": "1.0.0",
+  "description": "Example NodeJS Handler deployed onto Lambda with Terraform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Tranter <mark.a.tranter@gmail.com>",
+  "license": "MIT"
+}
