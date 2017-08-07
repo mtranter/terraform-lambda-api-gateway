@@ -3,3 +3,5 @@ target
 *.tfstate
 *.tfstate.backup
 .idea
+bin
+obj
