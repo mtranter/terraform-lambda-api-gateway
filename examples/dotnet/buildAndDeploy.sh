@@ -3,4 +3,5 @@ dotnet restore
 dotnet build
 dotnet lambda package
 cd ./../../deploy
-terraform apply
+terraform get
+terraform plan

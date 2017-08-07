@@ -8,6 +8,12 @@ variable "function_name" {
   description = "Name of the lambda function"
 }
 
+variable "function_timeout" {
+  type        = "string"
+  description = "Timeout in seconds"
+  default     = "3"
+}
+
 variable "runtime" {
   type        = "string"
   description = "Name of the lambda runtime"

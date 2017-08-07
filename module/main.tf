@@ -6,6 +6,7 @@ resource "aws_lambda_function" "lambda_function" {
   runtime           = "${var.runtime}"
   source_code_hash  = "${base64sha256(file("${var.source_file}"))}"
   publish           = true
+  timeout           = "${var.function_timeout}"
 }
 
 resource "aws_iam_role" "lambda_role" {
