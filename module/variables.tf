@@ -73,9 +73,9 @@ variable "path_part" {
   description = "Path of the API Gateway URL"
 }
 
-variable "http_method" {
-  type        = "string"
-  description = "HTTP Method to call API Gateway"
+variable "http_methods" {
+  type        = "list"
+  description = "HTTP Methods to call API Gateway"
 }
 
 variable "authorization" {

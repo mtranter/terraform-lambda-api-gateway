@@ -21,17 +21,19 @@ resource "aws_api_gateway_resource" "api_resource" {
 }
 
 resource "aws_api_gateway_method" "api_method" {
+  count         = "${length(var.http_methods)}"
   rest_api_id   = "${var.rest_api_id}"
   resource_id   = "${aws_api_gateway_resource.api_resource.id}"
-  http_method   = "${var.http_method}"
+  http_method   = "${element(var.http_methods, count.index)}"
   authorization = "${var.authorization}"
   authorizer_id = "${var.authorizer_id}"
 }
 
 resource "aws_api_gateway_integration" "api_method_integration" {
+  count                   = "${length(var.http_methods)}"
   rest_api_id             = "${var.rest_api_id}"
   resource_id             = "${aws_api_gateway_resource.api_resource.id}"
-  http_method             = "${aws_api_gateway_method.api_method.http_method}"
+  http_method             = "${element(aws_api_gateway_method.api_method.*.http_method, count.index)}"
   type                    = "AWS_PROXY"
   uri                     = "${aws_lambda_function.lambda_function.invoke_arn}"
   integration_http_method = "POST"
