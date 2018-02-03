@@ -10,14 +10,6 @@ output "aws_lambda_function_version" {
   value = "${aws_lambda_function.lambda_function.version}"
 }
 
-output "aws_api_gateway_resource_id" {
-  value = "${aws_api_gateway_resource.api_resource.id}"
-}
-
-output "aws_api_gateway_resource_path" {
-  value = "${aws_api_gateway_resource.api_resource.path}"
-}
-
 output "aws_api_gateway_deployment_id" {
   value = "${aws_api_gateway_deployment.deployment.id}"
 }
