@@ -14,17 +14,10 @@ resource "aws_iam_role" "lambda_role" {
   assume_role_policy = "${var.role_policy}"
 }
 
-resource "aws_api_gateway_resource" "api_resource" {
-  count       = "${var.use_sub_resource == "true" ? 1 : 0}"
-  rest_api_id = "${var.rest_api_id}"
-  parent_id   = "${var.parent_id}"
-  path_part   = "${var.path_part}"
-}
-
 resource "aws_api_gateway_method" "api_method" {
   count         = "${length(var.http_methods)}"
   rest_api_id   = "${var.rest_api_id}"
-  resource_id   = "${aws_api_gateway_resource.api_resource.*.id}"
+  resource_id   = "${var.parent_id}"
   http_method   = "${element(var.http_methods, count.index)}"
   authorization = "${var.authorization}"
   authorizer_id = "${var.authorizer_id}"
@@ -33,7 +26,7 @@ resource "aws_api_gateway_method" "api_method" {
 resource "aws_api_gateway_integration" "api_method_integration" {
   count                   = "${length(var.http_methods)}"
   rest_api_id             = "${var.rest_api_id}"
-  resource_id             = "${var.use_sub_resource == "true" ? aws_api_gateway_resource.api_resource.*.id : var.parent_id}"
+  resource_id             = "${var.parent_id}"
   http_method             = "${element(aws_api_gateway_method.api_method.*.http_method, count.index)}"
   type                    = "AWS_PROXY"
   uri                     = "${aws_lambda_function.lambda_function.invoke_arn}"
