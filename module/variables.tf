@@ -3,7 +3,7 @@ variable "source_file" {
   description = "Source file (jar, zip, etc)"
 }
 
-variable "use_sub_resourse" {
+variable "use_sub_resource" {
   default = "true"
 }
 
