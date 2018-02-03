@@ -33,7 +33,7 @@ resource "aws_api_gateway_method" "api_method" {
 resource "aws_api_gateway_integration" "api_method_integration" {
   count                   = "${length(var.http_methods)}"
   rest_api_id             = "${var.rest_api_id}"
-  resource_id             = "${var.use_sub_resource == "true" ? aws_api_gateway_resource.api_resource.id : var.parent_id}"
+  resource_id             = "${var.use_sub_resource == "true" ? aws_api_gateway_resource.api_resource.*.id : var.parent_id}"
   http_method             = "${element(aws_api_gateway_method.api_method.*.http_method, count.index)}"
   type                    = "AWS_PROXY"
   uri                     = "${aws_lambda_function.lambda_function.invoke_arn}"
