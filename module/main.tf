@@ -24,7 +24,7 @@ resource "aws_api_gateway_resource" "api_resource" {
 resource "aws_api_gateway_method" "api_method" {
   count         = "${length(var.http_methods)}"
   rest_api_id   = "${var.rest_api_id}"
-  resource_id   = "${aws_api_gateway_resource.api_resource.id}"
+  resource_id   = "${aws_api_gateway_resource.api_resource.*.id}"
   http_method   = "${element(var.http_methods, count.index)}"
   authorization = "${var.authorization}"
   authorizer_id = "${var.authorizer_id}"
