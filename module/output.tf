@@ -21,3 +21,7 @@ output "aws_api_gateway_deployment_invoke_url" {
 output "aws_api_gateway_deployment_execution_arn" {
   value = "${aws_api_gateway_deployment.deployment.invoke_url}"
 }
+
+outout "lamdba_role_id" { 
+  value = "${aws_iam_role.lambda_role.id"
+}
